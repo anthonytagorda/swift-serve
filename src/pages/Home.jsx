@@ -1,6 +1,10 @@
 import React from "react";
 import Navigation from "../components/shared/Navigation";
 import Greetings from "../components/home/Greetings";
+import MiniCard from "../components/home/MiniCard";
+import RecentOrders from "../components/home/RecentOrders";
+import { BsCashCoin } from "react-icons/bs";
+import { GrInProgress } from "react-icons/gr";
 
 const Home = () => {
   return (
@@ -8,11 +12,16 @@ const Home = () => {
 
       {/* LEFT DIV */}
       <div className="flex-3">
-        <Greetings/>
+        <Greetings />
+        <div className="flex items-center w-full gap-3 px-8 mt-8">
+          <MiniCard title="Total Earning" icon={<BsCashCoin />} number={512} footerNum={1.6} />
+          <MiniCard title="In Progress" icon={<GrInProgress />} number={16} footerNum={3.6} />
+        </div>
+        <RecentOrders />
       </div>
       {/* RIGHT DIV */}
       <div className="flex-2">
-        
+
       </div>
       <Navigation />
     </section>
