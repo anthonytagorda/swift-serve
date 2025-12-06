@@ -3,6 +3,7 @@ import Navigation from "../components/shared/Navigation";
 import Greetings from "../components/home/Greetings";
 import MiniCard from "../components/home/MiniCard";
 import RecentOrders from "../components/home/RecentOrders";
+import PopularDishes from "../components/home/PopularDishes";
 import { BsCashCoin } from "react-icons/bs";
 import { GrInProgress } from "react-icons/gr";
 
@@ -21,7 +22,7 @@ const Home = () => {
       </div>
       {/* RIGHT DIV */}
       <div className="flex-2">
-
+        <PopularDishes />
       </div>
       <Navigation />
     </section>
