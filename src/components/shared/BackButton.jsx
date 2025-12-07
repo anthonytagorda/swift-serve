@@ -1,0 +1,16 @@
+import React from 'react'
+import { IoArrowBackOutline } from 'react-icons/io5'
+import { useNavigate } from 'react-router-dom'
+
+const BackButton = () => {
+
+    const navigae = useNavigate();
+
+    return (
+        <div onClick={() => navigate(-1)} className='bg-[#9D5623] p-3 text-xl font-bold rounded-full text-white'>
+            <IoArrowBackOutline />
+        </div>
+    )
+}
+
+export default BackButton
