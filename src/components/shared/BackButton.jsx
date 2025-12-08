@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 const BackButton = () => {
 
-    const navigae = useNavigate();
+    const navigate = useNavigate();
 
     return (
         <div onClick={() => navigate(-1)} className='bg-[#9D5623] p-3 text-xl font-bold rounded-full text-white'>
