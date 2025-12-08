@@ -16,7 +16,7 @@ const OrderCard = () => {
                         <p className='text-gray-700 text-sm'>#101/ Dine in</p>
                     </div>
                     <div className='flex flex-col items-end gap-2'>
-                        <p className='text-green-600 bg-[#2e4a40] px-2 py-1 rounded-lg'>
+                        <p className='text-green-700 bg-[#8aceb5] px-2 py-1 rounded-lg'>
                             <FaCheckDouble className="inline mr-2" />
                             Ready
                         </p>
