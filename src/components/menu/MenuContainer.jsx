@@ -48,7 +48,7 @@ const MenuContainer = () => {
                 }
             </div>
 
-            <hr className='border-gray-400 border-t-2 mt-4' />
+            <hr className='border-gray-200 border-t-2 mt-4' />
 
             <div className='grid grid-cols-4 gap-4 px-10 py-4 w-full'>
                 {
@@ -56,15 +56,15 @@ const MenuContainer = () => {
                         return (
                             <div
                                 key={menu.id}
-                                className='flex flex-col items-start justify-between p-4 rounded-lg h-[150px] cursor-pointer hover:bg-gray-300 bg-gray-200'
+                                className='flex flex-col items-start justify-between p-4 rounded-lg h-[150px] cursor-pointer hover:bg-stone-200 bg-gray-200'
                             >
                                 <div className='flex items-start justify-between w-full'>
-                                    <h1 className='text-gray-800 text-lg font-semibold'>
+                                    <h1 className='text-gray-900 text-lg font-semibold'>
                                         {menu.name}
                                     </h1>
                                 </div>
                                 <div className='flex items-center justify-between w-full'>
-                                    <p className='text-gray-700 text-xl font-semibold'>
+                                    <p className='text-gray-800 text-xl font-semibold'>
                                         ₱{menu.price}
                                     </p>
                                     <div className="flex items-center justify-between px-4 py-3 rounded-lg gap-6 w-[50%]">

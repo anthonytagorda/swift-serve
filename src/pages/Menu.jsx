@@ -2,6 +2,9 @@ import React from 'react'
 import Navigation from '../components/shared/Navigation'
 import BackButton from '../components/shared/BackButton'
 import MenuContainer from '../components/menu/MenuContainer';
+import CustomerInfo from '../components/menu/CustomerInfo';
+import CartInfo from '../components/menu/CartInfo';
+import BillInfo from '../components/menu/BillInfo';
 import { MdRestaurantMenu } from 'react-icons/md';
 
 const Menu = () => {
@@ -22,15 +25,22 @@ const Menu = () => {
               <h1 className="text-md text-[#9D5623] font-semibold">
                 Customer Name
               </h1>
-              <p className="text-xs text-[#ababab] font-medium">Table No: 2</p>
+              <p className="text-xs text-shadow-stone-400 font-medium">Table No: 2</p>
             </div>
           </div>
         </div>
         <MenuContainer />
       </div>
       {/* RIGHT DIV */}
-      <div className="flex-1">
-
+      <div className="flex-1 bg-stone-50 mt-4 mr-3 h-[700px] rounded-lg pt-2">
+        {/* Customer Info */}
+        <CustomerInfo />
+        <hr className='border-gray-200 border-t-2' />
+        {/* Cart Items */}
+        <CartInfo />
+        <hr className='border-gray-200 border-t-2' />
+        {/* Bills */}
+        <BillInfo />
       </div>
       <Navigation />
     </section>
