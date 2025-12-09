@@ -15,7 +15,7 @@ const Home = () => {
       <div className="flex-3">
         <Greetings />
         <div className="flex items-center w-full gap-3 px-8 mt-8">
-          <MiniCard title="Total Earning" icon={<BsCashCoin />} number={512} footerNum={1.6} />
+          <MiniCard title="Total Earnings" icon={<BsCashCoin />} number={512} footerNum={1.6} />
           <MiniCard title="In Progress" icon={<GrInProgress />} number={16} footerNum={3.6} />
         </div>
         <RecentOrders />
