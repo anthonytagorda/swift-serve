@@ -1,10 +1,10 @@
-import { getRandomBG } from '../../utils'
+import { getBgColor } from '../../utils'
 import { useNavigate } from 'react-router-dom';
 
 const TableCard = ({ key, name, status, initials, seats }) => {
 
   const navigate = useNavigate();
-  const bgColor = getRandomBG();
+  const bgColor = getBgColor();
 
   const handleClick = () => {
     if (status === "Booked") return;
