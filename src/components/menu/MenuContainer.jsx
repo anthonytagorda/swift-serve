@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { menus } from '../../constants'
 import { GrRadialSelected } from 'react-icons/gr'
+import { FaBowlFood } from "react-icons/fa6";
 
 const MenuContainer = () => {
 
@@ -62,6 +63,9 @@ const MenuContainer = () => {
                                     <h1 className='text-gray-900 text-lg font-semibold'>
                                         {menu.name}
                                     </h1>
+                                    <button className='text-green-800 bg-[#8aceb5] p-2 rounded-lg cursor-pointer'>
+                                        <FaBowlFood size={20} />
+                                    </button>
                                 </div>
                                 <div className='flex items-center justify-between w-full'>
                                     <p className='text-gray-800 text-xl font-semibold'>
