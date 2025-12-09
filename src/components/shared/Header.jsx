@@ -23,15 +23,15 @@ const Header = () => {
       {/* LOGGED USER DETAILS */}
       <div className="flex items-center gap-4">
         <div className="bg-gray-200 rounded-[15px] p-3 cursor-pointer">
-          <FaBell className="text-gray-700 text-2xl" />
+          <FaBell className="text-[#5a2f11] text-2xl" />
         </div>
         <div className="flex items-center gap-3 cursor-pointer">
-          <FaUserCircle className="text-shadow-gray-700 text-4xl" />
+          <FaUserCircle className="text-[#5a2f11] text-4xl" />
           <div className="flex flex-col items-start">
             <h1 className="text-md text-[#9D5623] font-semibold">
               Freen Armstrong
             </h1>
-            <p className="text-xs text-[#ababab] font-medium">Admin</p>
+            <p className="text-xs text-[#ababab] font-medium">Cashier</p>
           </div>
         </div>
       </div>
