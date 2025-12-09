@@ -24,7 +24,7 @@ const Navigation = () => {
   const guestLabel = guestCount <= 1 ? "person" : "persons";
 
   return (
-    <div className='fixed bottom-0 left-0 right-0 bg-white p-2 h-16 flex justify-around'>
+    <div className='fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-sm shadow-[0_-8px_30px_rgba(0,0,0,0.08)] p-2 h-16 flex justify-around z-40'>
       <button
         onClick={() => navigate("/")}
         className='flex items-center justify-center text-[#9D5623] bg-gray-100 w-[300px] rounded-[20px] cursor-pointer'>
