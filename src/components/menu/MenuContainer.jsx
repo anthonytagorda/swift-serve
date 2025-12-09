@@ -2,19 +2,22 @@ import { useState } from 'react'
 import { menus } from '../../constants'
 import { GrRadialSelected } from 'react-icons/gr'
 import { FaBowlFood } from "react-icons/fa6";
+import { useDispatch } from 'react-redux';
 
 const MenuContainer = () => {
 
     const [selected, setSelected] = useState(menus[0]);
     const [itemCount, setItemCount] = useState(0);
     const [itemId, setItemId] = useState();
+    const dispatch = useDispatch();
+
     const increment = (id) => {
         setItemId(id);
         if (itemCount >= 4) return;
         setItemCount((prev) => prev + 1);
     };
 
-    const decrement = () => {
+    const decrement = (id) => {
         setItemId(id);
         if (itemCount <= 0) return;
         setItemCount((prev) => prev - 1);
