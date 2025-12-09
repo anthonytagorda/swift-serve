@@ -30,11 +30,17 @@ const Tables = () => {
                     </button>
                 </div>
             </div>
-            <div className='flex flex-wrap gap-5 p-10'>
+            <div className='grid grid-cols-5 gap-3 px-16 py-4 h-[650px] overflow-y-scorll scrollbar-hide'>
                 {
                     tables.map((table) => {
                         return (
-                            <TableCard name={table.name} status={table.status} initials={table.initial}/>
+                            <TableCard
+                                key={table.id}
+                                name={table.name}
+                                status={table.status}
+                                initials={table.initial}
+                                seats={table.seats}
+                            />
                         )
                     })
                 }
