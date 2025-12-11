@@ -1,10 +1,13 @@
 import dotenv from "dotenv";
 import express from "express";
-import mongoose from "mongoose";
+import connectDB from "./config/database.js";
 
 dotenv.config();
 
 const server = express();
+
+// Database
+connectDB();
 
 // Middlewares
 server.use(express.json());
@@ -15,5 +18,5 @@ server.get("/", (req, res) => {
 });
 
 // Start server
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8000;
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
