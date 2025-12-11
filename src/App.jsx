@@ -1,8 +1,15 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import { Home, Auth, Orders, Tables, Menu } from "./pages"
-import Header from "./components/shared/Header"
+import { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Home, Auth, Orders, Tables, Menu } from "./pages";
+import Header from "./components/shared/Header";
+import Clarity from "@microsoft/clarity";
 
 function App() {
+  // Microsoft Clarity
+  useEffect(() => {
+    Clarity.init("ujo59gd873");
+  }, []);
+
   return (
     <>
       <Router>
@@ -17,7 +24,7 @@ function App() {
         </Routes>
       </Router>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
