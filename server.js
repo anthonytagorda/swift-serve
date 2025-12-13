@@ -1,22 +1,36 @@
 import dotenv from "dotenv";
 import express from "express";
 import connectDB from "./config/database.js";
+import config from "./config/config.js";
+import globalErrorHandler from "./middleware/globalErrorHandler.js";
 
 dotenv.config();
 
 const server = express();
 
-// Database
-connectDB();
-
 // Middlewares
 server.use(express.json());
 
-// Test route
+// Routes
 server.get("/", (req, res) => {
     res.send("Server is running!");
 });
 
-// Start server
-const PORT = process.env.PORT || 8000;
-server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Global Error Handler (must be AFTER routes)
+server.use(globalErrorHandler);
+
+// Start server AFTER DB connection
+const startServer = async () => {
+    try {
+        await connectDB();
+
+        server.listen(config.port, () => {
+            console.log(`Server running on port ${config.port}`);
+        });
+    } catch (error) {
+        console.error("Failed to start server:", error.message);
+        process.exit(1);
+    }
+};
+
+startServer();
