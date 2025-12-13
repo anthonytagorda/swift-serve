@@ -1,14 +1,16 @@
 import mongoose from "mongoose";
+import config from "./config.js";
 
 const connectDB = async () => {
     try {
-        if (!process.env.MONGODB_URI) {
+        if (!config.databaseURI) {
             throw new Error("MONGODB_URI is not defined in .env");
         }
-        const conn = await mongoose.connect(process.env.MONGODB_URI);
+
+        const conn = await mongoose.connect(config.databaseURI);
         console.log(`MongoDB connected: ${conn.connection.host}`);
     } catch (error) {
-        console.error(`Error: ${error.message}`);
+        console.error(`Database connection failed: ${error.message}`);
         process.exit(1);
     }
 };
