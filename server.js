@@ -1,9 +1,10 @@
 import dotenv from "dotenv";
 import express from "express";
+import cookieParser from "cookie-parser";
 import connectDB from "./config/database.js";
 import config from "./config/config.js";
 import globalErrorHandler from "./middleware/globalErrorHandler.js";
-import userRoutes from "./routes/routes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 dotenv.config();
 
@@ -11,6 +12,8 @@ const server = express();
 
 // Middlewares
 server.use(express.json());
+server.use(express.urlencoded({ extended: true }));
+server.use(cookieParser());
 
 // Root Endpoint
 server.get("/", (req, res) => {
@@ -20,10 +23,10 @@ server.get("/", (req, res) => {
 // Other Endpoints
 server.use("/api/user", userRoutes);
 
-// Global Error Handler (must be AFTER routes)
+// Global Error Handler
 server.use(globalErrorHandler);
 
-// Start server AFTER DB connection
+// Start server
 const startServer = async () => {
   try {
     await connectDB();
