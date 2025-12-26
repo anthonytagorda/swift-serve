@@ -1,5 +1,5 @@
 import createHttpError from "http-errors";
-import User from "../models/model.js";
+import User from "../models/userModel.js";
 import config from "../config/config.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
