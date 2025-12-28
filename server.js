@@ -5,6 +5,7 @@ import connectDB from "./config/database.js";
 import config from "./config/config.js";
 import globalErrorHandler from "./middleware/globalErrorHandler.js";
 import userRoutes from "./routes/userRoutes.js";
+import orderRoutes from "./routes/orderRoutes.js";
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ server.get("/", (req, res) => {
 
 // Other Endpoints
 server.use("/api/user", userRoutes);
+server.use("/api/orders", orderRoutes);
 
 // Global Error Handler
 server.use(globalErrorHandler);
