@@ -24,6 +24,8 @@ const orderSchema = new mongoose.Schema(
         quantity: Number,
       },
     ],
+    items: [],
+    table: { type: mongoose.Schema.Types.ObjectId, ref: "Table" },
   },
   { timestamps: true }
 );
