@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import Order from "../models/orderModel.js";
 import createHttpError from "http-errors";
 
@@ -33,7 +34,13 @@ export const getOrders = async (req, res, next) => {
 /* ================= GET ORDER ID ================= */
 export const getOrderById = async (req, res, next) => {
   try {
-    const order = await Order.findById(req.params.id);
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return next(createHttpError(404, "Invalid ID"));
+    }
+
+    const order = await Order.findById(id);
 
     if (!order) {
       return next(createHttpError(404, "Order not found"));
@@ -52,8 +59,14 @@ export const getOrderById = async (req, res, next) => {
 export const updateOrder = async (req, res, next) => {
   try {
     const { orderStatus } = req.body;
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return next(createHttpError(404, "Invalid ID"));
+    }
+
     const updatedOrder = await Order.findByIdAndUpdate(
-      req.params.id,
+      id,
       { orderStatus },
       { new: true, runValidators: true }
     );
