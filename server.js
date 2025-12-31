@@ -6,6 +6,7 @@ import config from "./config/config.js";
 import globalErrorHandler from "./middleware/globalErrorHandler.js";
 import userRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
+import tableRoutes from "./routes/tableRoutes.js";
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ server.get("/", (req, res) => {
 // Other Endpoints
 server.use("/api/user", userRoutes);
 server.use("/api/orders", orderRoutes);
+server.use("/api/table", tableRoutes);
 
 // Global Error Handler
 server.use(globalErrorHandler);
