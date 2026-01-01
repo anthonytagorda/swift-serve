@@ -1,11 +1,14 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { Home, Auth, Orders, Tables, Menu } from "./pages";
 import Header from "./components/shared/Header";
 
-function App() {
+function Layout() {
+  const location = useLocation();
+  const hideHeaderRoutes = ["/auth"];
+
   return (
-    <Router>
-      <Header />
+    <>
+      {!hideHeaderRoutes.includes(location.pathname) && <Header />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/auth" element={<Auth />} />
@@ -14,8 +17,15 @@ function App() {
         <Route path="/menu" element={<Menu />} />
         <Route path="*" element={<div>Not Found</div>} />
       </Routes>
-    </Router>
+    </>
   );
+}
+function App() {
+  return (
+    <Router>
+      <Layout />
+    </Router>
+  )
 }
 
 export default App;
