@@ -95,13 +95,14 @@ const Register = () => {
                         Choose you role
                     </label>
                     <div className="flex item-center gap-3 mt-4">
-                        {["Waiter", "Cashier", "Admin"].map((role) => {
+                        {["Waiter", "Cashier", "Manager"].map((role) => {
                             return (
                                 <button
                                     key={role}
                                     type="button"
                                     onClick={() => handleRoleSelection(role)}
-                                    className={`bg-gray-100 border border-gray-200 px-4 py-3 w-full rounded-lg text-[#9D5623] shadow-sm ${formData.role === role ? "bg-gray-200 text-[#ca8655]" : ""}`}
+                                    className={`bg-gray-100 border border-gray-200 px-4 py-3 w-full rounded-lg text-[#9D5623] shadow-sm 
+                                        ${formData.role === role ? "bg-gray-200 text-[#ca8655]" : ""}`}
                                 >
                                     {role}
                                 </button>
