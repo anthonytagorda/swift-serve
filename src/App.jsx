@@ -4,14 +4,14 @@ import Header from "./components/shared/Header";
 
 function Layout() {
   const location = useLocation();
-  const hideHeaderRoutes = ["/auth"];
+  const hideHeader = location.pathname === "/auth";
 
   return (
     <>
-      {!hideHeaderRoutes.includes(location.pathname) && <Header />}
+      {!hideHeader && <Header />}
       <Routes>
-        <Route path="/" element={<Home />} />
         <Route path="/auth" element={<Auth />} />
+        <Route path="/" element={<Home />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/tables" element={<Tables />} />
         <Route path="/menu" element={<Menu />} />
