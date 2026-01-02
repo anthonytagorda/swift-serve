@@ -1,5 +1,10 @@
 import express from "express";
-import { register, login, getUserData } from "../controllers/userController.js";
+import {
+  register,
+  login,
+  getUserData,
+  logout,
+} from "../controllers/userController.js";
 import { isVerifiedUser } from "../middleware/token.js";
 
 const router = express.Router();
@@ -7,6 +12,7 @@ const router = express.Router();
 // Authentication Routes
 router.route("/register").post(register);
 router.route("/login").post(login);
+router.route("/logout").post(logout);
 
 router.route("/").get(isVerifiedUser, getUserData);
 

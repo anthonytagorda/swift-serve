@@ -95,10 +95,29 @@ export const login = async (req, res, next) => {
   }
 };
 
+/* ================= GET USER DATA ================= */
 export const getUserData = async (req, res, next) => {
   try {
     const user = await User.findById(req.user._id);
     res.status(200).json({ success: true, data: user });
+  } catch (error) {
+    next(error);
+  }
+};
+
+/* ================= LOGOUT ================= */
+export const logout = async (req, res, next) => {
+  try {
+    res.clearCookie("accessToken", {
+      httpOnly: true,
+      sameSite: "lax",
+      secure: false,
+    });
+
+    res.status(200).json({
+      success: true,
+      message: "User logged out",
+    });
   } catch (error) {
     next(error);
   }

@@ -1,8 +1,32 @@
-import React from "react";
-import { FaSearch, FaUserCircle, FaBell } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import { logout } from "../../https/index.js"
+import { removeUser } from "../../redux/slices/userSlice";
+import { FaSearch, FaUserCircle, FaBell, FaSignOutAlt } from "react-icons/fa";
 import logo from "../../assets/images/swift-serve-logo.svg";
 
 const Header = () => {
+  const userData = useSelector(state => state.user);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const logoutMutation = useMutation({
+    mutationFn: logout,
+    onSuccess: () => {
+      dispatch(removeUser());
+      navigate("/auth", { replace: true });
+    },
+    onError: (error) => {
+      console.error("Logout failed:", error);
+    },
+  });
+
+
+  const handleLogout = () => {
+    logoutMutation.mutate();
+  }
+
   return (
     <header className="flex justify-between items-center py-4 px-8 bg-white shadow-md">
       {/* LOGO */}
@@ -29,10 +53,13 @@ const Header = () => {
           <FaUserCircle className="text-[#5a2f11] text-4xl" />
           <div className="flex flex-col items-start">
             <h1 className="text-md text-[#9D5623] font-semibold">
-              Freen Armstrong
+              {userData.name || "User"}
             </h1>
-            <p className="text-xs text-[#ababab] font-medium">Cashier</p>
+            <p className="text-xs text-[#ababab] font-medium">
+              {userData.role || "Role"}
+            </p>
           </div>
+          <FaSignOutAlt onClick={handleLogout} className="text-red-400 ml-2" size={25} />
         </div>
       </div>
     </header>
