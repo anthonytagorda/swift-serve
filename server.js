@@ -1,3 +1,4 @@
+import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import cookieParser from "cookie-parser";
@@ -13,6 +14,12 @@ dotenv.config();
 const server = express();
 
 // Middlewares
+server.use(
+  cors({
+    credentials: true,
+    origin: ["http://localhost:5173"],
+  })
+);
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 server.use(cookieParser());
