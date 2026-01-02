@@ -1,13 +1,24 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const Greetings = () => {
+  const userData = useSelector(state => state.user);
   const [dateTime, setDateTime] = useState(new Date());
 
-  // Updates the Time
+  // Update Time
   useEffect(() => {
     const timer = setInterval(() => setDateTime(new Date()), 1000); // 1 second
     return () => clearInterval(timer);
   }, []);
+
+  // Update Greeting depending on day time
+  const getGreeting = (date) => {
+    const hour = date.getHours();
+
+    if (hour >= 5 && hour < 12) return "Morning";
+    if (hour >= 12 && hour < 18) return "Afternoon";
+    return "Evening";
+  };
 
   const formatDate = (date) => {
     const months = [
@@ -39,7 +50,7 @@ const Greetings = () => {
     <div className="flex justify-between items-center px-8 mt-5">
       <div>
         <h1 className="text-[#9D5623] text-2xl mb-2 font-semibold tracking-wide">
-          Good Morning, Freen
+          Good {getGreeting(dateTime)}, {userData.name || "User"}
         </h1>
         <p className="text-[#ababab] text-sm">Give your best today!</p>
       </div>
