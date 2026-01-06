@@ -1,9 +1,9 @@
 import express from "express";
 import {
-  register,
-  login,
-  getUserData,
-  logout,
+	register,
+	login,
+	getUserData,
+	logout,
 } from "../controllers/userController.js";
 import { isVerifiedUser } from "../middleware/token.js";
 
