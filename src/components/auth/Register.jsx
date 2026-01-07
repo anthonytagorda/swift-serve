@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { useMutation } from "@tanstack/react-query";
+import { enqueueSnackbar } from "notistack";
+import { register } from "../../https/index.js";
 
-const Register = () => {
+const Register = ({ setIsRegister }) => {
 
     const [formData, setFormData] = useState({
         name: "",
@@ -14,14 +17,44 @@ const Register = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(formData);
-    }
-
     const handleRoleSelection = (selectedRole) => {
         setFormData({ ...formData, role: selectedRole });
     }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        registerMutation.mutate(formData);
+    }
+
+    const registerMutation = useMutation({
+        mutationFn: (reqData) => register(reqData),
+        onSuccess: (res) => {
+            const { data } = res;
+            enqueueSnackbar(
+                data.message, {
+                variant: "success"
+            }
+            );
+
+            // Clear form fields
+            setFormData({
+                name: "",
+                email: "",
+                phone: "",
+                password: "",
+                role: "",
+            });
+
+            setTimeout(() => {
+                setIsRegister(false);
+            }, 1500);
+        },
+        onError: (error) => {
+            const { response } = error;
+            const message = response.data.message;
+            enqueueSnackbar(message, { variant: "error" });
+        }
+    })
 
     return (
         <div>
@@ -92,7 +125,7 @@ const Register = () => {
                 </div>
                 <div>
                     <label className='block text-[#9D5623] mb-2 mt-3 text-sm font-medium'>
-                        Choose you role
+                        Choose your role
                     </label>
                     <div className="flex item-center gap-3 mt-4">
                         {["Waiter", "Cashier", "Manager"].map((role) => {
